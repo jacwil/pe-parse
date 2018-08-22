@@ -42,7 +42,7 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build . --config Release
 
 # optional
-cmake --build . --config Release --target install
+sudo cmake --build . --config Release --target install
 ```
 
 ### Notes about Windows

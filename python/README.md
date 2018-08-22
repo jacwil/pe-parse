@@ -4,13 +4,24 @@ pepy (pronounced p-pie) is a python binding to the pe-parse parser.
 
 Building
 ========
-If you can build pe-parse and have a working python environment (headers and
-libraries) you can build pepy.
+If you can build pe-parse and have a working python dev environment (headers
+and libraries) you can build pepy.
 
-1. Build pepy:
+### Python 2.x
+1. Install python-dev package:
+  * apt-get install python-dev
+2. Build pepy:
   * python setup.py build
-2. Install pepy:
-  * python setup.py install
+3. Install pepy:
+  * sudo python setup.py install
+
+### Python 3.x
+1. Install python3-dev package:
+  * apt-get install python3-dev
+2. Build pepy:
+  * python3 setup.py build
+3. Install pepy:
+  * sudo python3 setup.py install
 
 Using
 =====

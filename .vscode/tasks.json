@@ -14,7 +14,18 @@
             },
             "presentation": {
                 "reveal": "always",
-                "panel": "new",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Install library: pe-parser",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/build && sudo cmake --build . --config Release --target install",
+            "problemMatcher": [],
+            "group": "none",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
             }
         },
         {
@@ -28,7 +39,55 @@
             },
             "presentation": {
                 "reveal": "always",
-                "panel": "new",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Build example: peaddrconv",
+            "type": "shell",
+            "command": "[ -d ${workspaceFolder}/examples/peaddrconv/build ] || mkdir ${workspaceFolder}/examples/peaddrconv/build ; cd ${workspaceFolder}/examples/peaddrconv/build ; cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build and install python bindings",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/python"
+            },
+            "command": "python setup.py build && sudo python setup.py install",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Build and install python3 bindings",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/python"
+            },
+            "command": "python3 setup.py build && sudo python3 setup.py install",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
             }
         }
     ]
