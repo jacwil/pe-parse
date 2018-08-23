@@ -6,7 +6,12 @@ if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 endif ()
 
 if (MSVC)
+  # Default CMAKE_PREFIX_PATH is empty and CMAKE_SYSTEM_PREFIX_PATH is
+  # set to a list of Program Files directories, which is a problem because
+  # pe-parser-library (by default) installs itself to `%SystemDrive%\usr`
+  # directory on Windows its not found by CMake when performing its search.
   list(APPEND CMAKE_PREFIX_PATH /usr/lib/cmake)
+
   list(APPEND PEADDRCONV_CXXFLAGS /W4 /WX /analyze)
 
   if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
