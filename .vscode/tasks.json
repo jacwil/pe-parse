@@ -6,7 +6,7 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "mkdir ${workspaceFolder}/build ; cd ${workspaceFolder}/build ; cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release",
+            "command": "mkdir ${workspaceFolder}/build ; cd ${workspaceFolder}/build ; cmake -DCMAKE_BUILD_TYPE=Release .. ; cmake --build . --config Release",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -20,7 +20,15 @@
         {
             "label": "Install library: pe-parser",
             "type": "shell",
-            "command": "cd ${workspaceFolder}/build && sudo cmake --build . --config Release --target install",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "linux": {
+                "command": "sudo cmake --build . --config Release --target install"
+            },
+            "windows": {
+                "command": "cmake --build . --config Release --target install"                
+            },
             "problemMatcher": [],
             "group": "none",
             "presentation": {
@@ -31,7 +39,12 @@
         {
             "label": "Run tests",
             "type": "shell",
-            "command": "${workspaceFolder}/scripts/getpe.sh",
+            "linux": {
+                "command": "${workspaceFolder}/scripts/getpe.sh",
+            },
+            "windows": {
+                "command": ""
+            },
             "problemMatcher": [],
             "group": {
                 "kind": "test",
@@ -45,7 +58,7 @@
         {
             "label": "Build example: peaddrconv",
             "type": "shell",
-            "command": "[ -d ${workspaceFolder}/examples/peaddrconv/build ] || mkdir ${workspaceFolder}/examples/peaddrconv/build ; cd ${workspaceFolder}/examples/peaddrconv/build ; cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release",
+            "command": "mkdir ${workspaceFolder}/examples/peaddrconv/build ; cd ${workspaceFolder}/examples/peaddrconv/build ; cmake -DCMAKE_BUILD_TYPE=Release .. ; cmake --build . --config Release",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -62,7 +75,12 @@
             "options": {
                 "cwd": "${workspaceFolder}/python"
             },
-            "command": "python setup.py build && sudo python setup.py install",
+            "linux": {
+                "command": "python setup.py build ; sudo python setup.py install"
+            },
+            "windows": {
+                "command": "python setup.py build ; python setup.py install"                
+            },
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -79,7 +97,12 @@
             "options": {
                 "cwd": "${workspaceFolder}/python"
             },
-            "command": "python3 setup.py build && sudo python3 setup.py install",
+            "linux": {
+                "command": "python3 setup.py build ; sudo python3 setup.py install"
+            },
+            "windows": {
+                "command": "python setup.py build ; python setup.py install"                
+            },
             "problemMatcher": [],
             "group": {
                 "kind": "build",

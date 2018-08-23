@@ -7,9 +7,11 @@ Building
 If you can build pe-parse and have a working python dev environment (headers
 and libraries) you can build pepy.
 
+Building on Linux
+-----------------
 ### Python 2.x
 1. Install python-dev package:
-  * apt-get install python-dev
+  * sudo apt-get install python-dev
 2. Build pepy:
   * python setup.py build
 3. Install pepy:
@@ -17,11 +19,18 @@ and libraries) you can build pepy.
 
 ### Python 3.x
 1. Install python3-dev package:
-  * apt-get install python3-dev
+  * sudo apt-get install python3-dev
 2. Build pepy:
   * python3 setup.py build
 3. Install pepy:
   * sudo python3 setup.py install
+
+Building on Windows
+-------------------
+1. Build pepy:
+  * python setup.py build
+2. Install pepy:
+  * python setup.py install
 
 Using
 =====
@@ -30,7 +39,7 @@ Parsed object
 There are a number of objects involved in pepy. The main one is the **parsed**
 object. This object is returned by the *parse* method.
 
-```
+```python
 import pepy
 p = pepy.parse("/path/to/exe")
 ```
@@ -81,7 +90,7 @@ The **parsed** object has a number of attributes:
 * rvasandsize
 
 Example:
-```
+```python
 import time
 import pepy
 
@@ -161,7 +170,7 @@ type value to a string representation.
 
 The following code shows how to iterate through resources:
 
-```
+```python
 import pepy
 
 from hashlib import md5
