@@ -1958,4 +1958,75 @@ bool GetEntryPoint(parsed_pe *pe, VA &v) {
 
   return false;
 }
+
+const char *GetMachineAsString(parsed_pe *pe) {
+  if (pe == nullptr)
+    return nullptr;
+
+  switch (pe->peHeader.nt.FileHeader.Machine) {
+    case IMAGE_FILE_MACHINE_I386:
+      return "x86";
+    case IMAGE_FILE_MACHINE_ARMNT:
+      return "ARM Thumb-2 Little-Endian";
+    case IMAGE_FILE_MACHINE_IA64:
+      return "Intel IA64";
+    case IMAGE_FILE_MACHINE_AMD64:
+      return "x64";
+    case IMAGE_FILE_MACHINE_ARM64:
+      return "ARM64";
+    case IMAGE_FILE_MACHINE_CEE:
+      return "CLR Pure MSIL";
+    default:
+      return nullptr;
+  }
+}
+
+const char *GetSubsystemAsString(parsed_pe *pe) {
+  if (pe == nullptr)
+    return nullptr;
+
+  std::uint16_t subsystem;
+  if (pe->peHeader.nt.OptionalMagic == NT_OPTIONAL_32_MAGIC)
+    subsystem = pe->peHeader.nt.OptionalHeader.Subsystem;
+  else if (pe->peHeader.nt.OptionalMagic == NT_OPTIONAL_64_MAGIC)
+    subsystem = pe->peHeader.nt.OptionalHeader64.Subsystem;
+  else
+    return nullptr;
+
+  switch (subsystem) {
+    case IMAGE_SUBSYSTEM_UNKNOWN:
+      return "UNKNOWN";
+    case IMAGE_SUBSYSTEM_NATIVE:
+      return "NATIVE";
+    case IMAGE_SUBSYSTEM_WINDOWS_GUI:
+      return "WINDOWS_GUI";
+    case IMAGE_SUBSYSTEM_WINDOWS_CUI:
+      return "WINDOWS_CUI";
+    case IMAGE_SUBSYSTEM_OS2_CUI:
+      return "OS2_CUI";
+    case IMAGE_SUBSYSTEM_POSIX_CUI:
+      return "POSIX_CUI";
+    case IMAGE_SUBSYSTEM_NATIVE_WINDOWS:
+      return "NATIVE_WINDOWS";
+    case IMAGE_SUBSYSTEM_WINDOWS_CE_GUI:
+      return "WINDOWS_CE_GUI";
+    case IMAGE_SUBSYSTEM_EFI_APPLICATION:
+      return "EFI_APPLICATION";
+    case IMAGE_SUBSYSTEM_EFI_BOOT_SERVICE_DRIVER:
+      return "EFI_BOOT_SERVICE_DRIVER";
+    case IMAGE_SUBSYSTEM_EFI_RUNTIME_DRIVER:
+      return "EFI_RUNTIME_DRIVER";
+    case IMAGE_SUBSYSTEM_EFI_ROM:
+      return "EFI_ROM";
+    case IMAGE_SUBSYSTEM_XBOX:
+      return "XBOX";
+    case IMAGE_SUBSYSTEM_WINDOWS_BOOT_APPLICATION:
+      return "WINDOWS_BOOT_APPLICATION";
+    case IMAGE_SUBSYSTEM_XBOX_CODE_CATALOG:
+      return "XBOX_CODE_CATALOG";
+    default:
+      return nullptr;
+  }
+}
+
 } // namespace peparse
