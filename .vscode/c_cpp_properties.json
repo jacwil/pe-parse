@@ -14,10 +14,11 @@
             "compileCommands": ""
         },
         {
-            "name": "Windows",
+            "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include"
+                "C:\\usr\\include",
+                "C:\\Python37\\include"
             ],
             "defines": [],
             "cStandard": "c11",

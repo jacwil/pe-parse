@@ -18,6 +18,21 @@
             }
         },
         {
+            "label": "Build Debug",
+            "type": "shell",
+            "command": "mkdir ${workspaceFolder}/build ; cd ${workspaceFolder}/build ; cmake -DCMAKE_BUILD_TYPE=Debug .. ; cmake --build . --config Debug",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": false
+            }
+        },
+        {
             "label": "Install library: pe-parser",
             "type": "shell",
             "options": {
