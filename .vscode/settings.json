@@ -1,6 +1,11 @@
 {
     "C_Cpp.errorSquiggles": "Enabled",
     "files.associations": {
-        "functional": "cpp"
+        "functional": "cpp",
+        "iosfwd": "cpp",
+        "xlocale": "cpp",
+        "xstring": "cpp",
+        "memory": "cpp",
+        "xutility": "cpp"
     }
 }
