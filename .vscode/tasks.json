@@ -42,7 +42,7 @@
                 "command": "sudo cmake --build . --config Release --target install"
             },
             "windows": {
-                "command": "cmake --build . --config Release --target install"                
+                "command": "cmake --build . --config Release --target install"
             },
             "problemMatcher": [],
             "group": "none",
@@ -94,7 +94,12 @@
                 "command": "python setup.py build ; sudo python setup.py install"
             },
             "windows": {
-                "command": "python setup.py build ; python setup.py install"                
+                "options": {
+                    "env": {
+                        "VS90COMNTOOLS": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\Tools\\"
+                    }
+                },
+                "command": "python setup.py build ; python setup.py install"
             },
             "problemMatcher": [],
             "group": {
@@ -116,7 +121,7 @@
                 "command": "python3 setup.py build ; sudo python3 setup.py install"
             },
             "windows": {
-                "command": "python setup.py build ; python setup.py install"                
+                "command": "python3 setup.py build ; python3 setup.py install"
             },
             "problemMatcher": [],
             "group": {
